@@ -21,9 +21,15 @@ function App() {
 
     const completeTodo = (index) => {
         const newTodos = [...todos];
-        newTodos[index].isCompleted = true;
+        newTodos[index].isCompleted = !newTodos[index].isCompleted;
         setTodos(newTodos);
     }
+
+    const removeTodo = (index) => {
+        const newTodos = [...todos];
+        newTodos.splice(index, 1);
+        setTodos(newTodos);
+    };
 
     // template
     return (
@@ -36,6 +42,7 @@ function App() {
                 key={index} 
                 index={index}
                 completeTodo={completeTodo}
+                removeTodo={removeTodo}
                 />
             ))}
             <TodoForm addTodo={addTodo} />
